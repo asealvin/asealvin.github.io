@@ -40,7 +40,7 @@ theme = 'PaperMod'
 [[menu.main]]
   identifier = "cycling"
   name = "骑行"
-  url = "/cycling/" # 之后如果你重新弄骑行可以连上，或者先留着
+  url = "/posts/" # 之后如果你重新弄骑行可以连上，或者先留着
   weight = 30
 
 [[menu.main]]
