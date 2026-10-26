@@ -1,0 +1,4 @@
+/* 隐藏导航栏外部链接的箭头小图标 */
+.menu a svg {
+    display: none !important;
+}
