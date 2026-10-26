@@ -8,6 +8,10 @@ theme = 'PaperMod'
   ShowReadingTime = true
   ShowShareButtons = false
   ShowPostNavLinks = true
+  # 隐藏菜单中外链链接自带的斜向上箭头图标
+  hideOtherLanguagesInLanguageSwitcher = true # （非此项）
+  # 隐藏外链图标的配置参数如下：
+  disableExternalLinkIcon = true
   # 网站图标 (Favicon) 配置
   [params.favicon]
     url = "/favicon.ico" # 默认图标路径
