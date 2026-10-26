@@ -12,20 +12,29 @@ theme = 'PaperMod'
   # 主页个人介绍配置
   [params.homeInfoParams]
     Title = "Hi, 我是 asealvin 👋"
-    Content = "摄影师 / 作者 / 公路车爱好者"
+    Content = "摄影师 / 写作者 / 公路车爱好者"
 
 # 顶部导航栏菜单
 [[menu.main]]
+  identifier = "posts"
   name = "文章"
   url = "/posts/"
-  weight = 1
+  weight = 10
 
 [[menu.main]]
+  identifier = "photography"
   name = "摄影"
-  url = "/photos/"
-  weight = 2
+  url = "/photography/" # 如果你有摄影页面，保留此行；没有的话可先按你原有的配置
+  weight = 20
 
 [[menu.main]]
+  identifier = "cycling"
+  name = "骑行"
+  url = "/cycling/" # 之后如果你重新弄骑行可以连上，或者先留着
+  weight = 30
+
+[[menu.main]]
+identifier = "podcast"
   name = "播客"
-  url = "/podcast/"
-  weight = 3
+  url = "https://asealvin.firstory.cc/"  # 替换为你的 Firstory 实际链接
+  weight = 40
