@@ -8,6 +8,12 @@ theme = 'PaperMod'
   ShowReadingTime = true
   ShowShareButtons = false
   ShowPostNavLinks = true
+  # 网站图标 (Favicon) 配置
+  [params.favicon]
+    url = "/favicon.ico" # 默认图标路径
+    16x16 = "/favicon-16x16.png" # 16x16 像素小图标（可选）
+    32x32 = "/favicon-32x32.png" # 32x32 像素图标（可选）
+    apple = "/apple-touch-icon.png" # iOS 设备添加书签时的图标（可选）
   
   # 主页个人介绍配置
   [params.homeInfoParams]
