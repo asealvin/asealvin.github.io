@@ -38,6 +38,11 @@ theme = 'PaperMod'
   weight = 20
 
 [[menu.main]]
+  identifier = "cycling"
+  name = "骑行"
+  url = "https://cycling.asealvin.com/zh"
+  weight = 30
+[[menu.main]]
 identifier = "podcast"
   name = "播客"
   url = "https://asealvin.firstory.cc/"  # 替换为你的 Firstory 实际链接
