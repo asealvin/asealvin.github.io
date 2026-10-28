@@ -295,3 +295,15 @@ body.list:has(.home-hero) .footer {
         font-size: .72rem;
     }
 }
+
+/* Consistent keyboard and touch feedback across navigation. */
+.header .menu a:focus-visible,
+body.list:has(.home-hero) .menu a:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+}
+@media (pointer: coarse) {
+    .header .menu a,
+    body.list:has(.home-hero) .menu a { min-height: 44px; }
+    #theme-toggle { min-width: 44px; min-height: 44px; }
+}
