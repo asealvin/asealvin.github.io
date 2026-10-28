@@ -2,6 +2,22 @@
 .menu a svg {
     display: none !important;
 }
+
+/* Use Avenir for Latin letters and figures; CJK glyphs retain the system Chinese fallback. */
+:root {
+    --asealvin-latin-font: Avenir, "Avenir Next", "Avenir Next LT Pro", -apple-system,
+        BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB",
+        "Microsoft YaHei", sans-serif;
+}
+
+body,
+button,
+input,
+textarea,
+select {
+    font-family: var(--asealvin-latin-font);
+}
+
 /* Personal brand mark: dark in light mode, light in dark mode. */
 .logo a {
     font-size: 0;
@@ -29,6 +45,7 @@ html[data-theme="dark"] .logo a img {
         max-width: var(--main-width);
     }
 }
+
 /* Keep the theme control above the navigation hit area. */
 .logo-switches,
 #theme-toggle {
