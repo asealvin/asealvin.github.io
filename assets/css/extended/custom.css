@@ -251,3 +251,8 @@ body.list:has(.home-hero) .footer {
         font-size: .72rem;
     }
 }
+
+@media (min-width: 769px) {
+  .home-hero .entry-header h1 { font-size: clamp(2.25rem, 5vw, 4.4rem); white-space: nowrap; }
+  .home-hero .entry-content, .home-hero .entry-content p { white-space: nowrap; }
+}
