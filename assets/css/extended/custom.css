@@ -29,3 +29,10 @@ html[data-theme="dark"] .logo a img {
         max-width: var(--main-width);
     }
 }
+/* Keep the theme control above the navigation hit area. */
+.logo-switches,
+#theme-toggle {
+    position: relative;
+    z-index: 2;
+    pointer-events: auto;
+}
