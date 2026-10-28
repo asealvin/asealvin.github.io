@@ -1,8 +1,23 @@
 {{- with site.Params.homeInfoParams }}
-<article class="first-entry home-info">
-  <header class="entry-header">
-    <h1>{{ .Title | markdownify }}</h1>
-  </header>
-  <div class="entry-content">{{ .Content | markdownify }}</div>
-</article>
+<section class="asealvin-home" aria-labelledby="home-title">
+  <article class="first-entry home-info asealvin-intro">
+    <p class="asealvin-kicker">ASEALVIN · FIELD NOTES</p>
+    <header class="entry-header"><h1 id="home-title">{{ .Title | markdownify }}</h1></header>
+    <div class="entry-content">{{ .Content | markdownify }}</div>
+    <p class="asealvin-lede">在路上记录光线、风景与抵达。</p>
+    <div class="asealvin-actions" aria-label="探索内容">
+      <a href="/posts/">阅读文章 <span aria-hidden="true">↗</span></a>
+      <a href="https://photography.asealvin.com/">观看摄影 <span aria-hidden="true">↗</span></a>
+    </div>
+  </article>
+  <figure class="asealvin-hero">
+    <img src="/images/home/wgq-2377.jpg" alt="山谷公路上骑行的人与远处群山" width="1600" height="2400" fetchpriority="high">
+    <figcaption>骑行于山谷之间</figcaption>
+  </figure>
+</section>
+<nav class="asealvin-portals" aria-label="内容入口">
+  <a class="asealvin-portal" href="/posts/"><span class="portal-index">01</span><span class="portal-copy"><strong>文章</strong><small>Thoughts &amp; notes</small></span><span class="portal-arrow" aria-hidden="true">↗</span></a>
+  <a class="asealvin-portal" href="https://photography.asealvin.com/"><span class="portal-index">02</span><span class="portal-copy"><strong>摄影</strong><small>Light &amp; everyday</small></span><span class="portal-arrow" aria-hidden="true">↗</span></a>
+  <a class="asealvin-portal" href="https://cycling.asealvin.com/zh"><span class="portal-index">03</span><span class="portal-copy"><strong>骑行</strong><small>Road &amp; distance</small></span><span class="portal-arrow" aria-hidden="true">↗</span></a>
+</nav>
 {{- end }}
