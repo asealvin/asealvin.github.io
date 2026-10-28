@@ -1,13 +1,21 @@
+/* Self-hosted Avenir for Latin letters and figures. Chinese glyphs continue to use the system CJK fallback. */
+@font-face {
+    font-family: "Asealvin Avenir";
+    src: url("/fonts/Avenir-Regular.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
 /* 隐藏导航栏外部链接的箭头小图标 */
 .menu a svg {
     display: none !important;
 }
 
-/* Use Avenir for Latin letters and figures; CJK glyphs retain the system Chinese fallback. */
 :root {
-    --asealvin-latin-font: Avenir, "Avenir Next", "Avenir Next LT Pro", -apple-system,
-        BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB",
-        "Microsoft YaHei", sans-serif;
+    --asealvin-latin-font: "Asealvin Avenir", Avenir, "Avenir Next",
+        "Avenir Next LT Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
+        "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
 }
 
 body,
