@@ -77,3 +77,15 @@ html[data-theme="dark"] .logo a img {
     z-index: 2;
     pointer-events: auto;
 }
+
+/* Smoothly blend the site palette only while the user changes theme. */
+@media (prefers-reduced-motion: no-preference) {
+    html.theme-animating,
+    html.theme-animating *,
+    html.theme-animating *::before,
+    html.theme-animating *::after {
+        transition-property: background-color, color, border-color, box-shadow, fill, stroke;
+        transition-duration: 280ms;
+        transition-timing-function: ease;
+    }
+}
