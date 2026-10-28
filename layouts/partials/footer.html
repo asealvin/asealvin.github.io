@@ -1,1 +1,9 @@
 <footer class="footer"><span>&copy; 2026 asealvin</span></footer>
+<script>
+  document.getElementById('theme-toggle')?.addEventListener('click', () => {
+    const root = document.documentElement
+    const nextTheme = root.dataset.theme === 'dark' ? 'light' : 'dark'
+    root.dataset.theme = nextTheme
+    localStorage.setItem('pref-theme', nextTheme)
+  })
+</script>
