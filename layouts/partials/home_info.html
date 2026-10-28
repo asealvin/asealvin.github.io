@@ -1,23 +1,77 @@
 {{- with site.Params.homeInfoParams }}
-<section class="asealvin-home" aria-labelledby="home-title">
-  <article class="first-entry home-info asealvin-intro">
-    <p class="asealvin-kicker">ASEALVIN · FIELD NOTES</p>
-    <header class="entry-header"><h1 id="home-title">{{ .Title | markdownify }}</h1></header>
+<article class="first-entry home-info home-hero" aria-labelledby="home-hero-title">
+  <div class="home-hero-media" aria-hidden="true">
+    <img class="home-hero-image is-active" alt="" decoding="async">
+    <img class="home-hero-image" alt="" decoding="async">
+  </div>
+  <div class="home-hero-shade" aria-hidden="true"></div>
+  <div class="home-hero-content">
+    <p class="home-hero-kicker">asealvin</p>
+    <header class="entry-header">
+      <h1 id="home-hero-title">{{ .Title | markdownify }}</h1>
+    </header>
     <div class="entry-content">{{ .Content | markdownify }}</div>
-    <p class="asealvin-lede">在路上记录光线、风景与抵达。</p>
-    <div class="asealvin-actions" aria-label="探索内容">
-      <a href="/posts/">阅读文章 <span aria-hidden="true">↗</span></a>
-      <a href="https://photography.asealvin.com/">观看摄影 <span aria-hidden="true">↗</span></a>
-    </div>
-  </article>
-  <figure class="asealvin-hero">
-    <img src="/images/home-hero.jpg" alt="山谷公路上骑行的人与远处群山" width="1600" height="2400" fetchpriority="high">
-    <figcaption>骑行于山谷之间</figcaption>
-  </figure>
-</section>
-<nav class="asealvin-portals" aria-label="内容入口">
-  <a class="asealvin-portal" href="/posts/"><span class="portal-index">01</span><span class="portal-copy"><strong>文章</strong><small>Thoughts &amp; notes</small></span><span class="portal-arrow" aria-hidden="true">↗</span></a>
-  <a class="asealvin-portal" href="https://photography.asealvin.com/"><span class="portal-index">02</span><span class="portal-copy"><strong>摄影</strong><small>Light &amp; everyday</small></span><span class="portal-arrow" aria-hidden="true">↗</span></a>
-  <a class="asealvin-portal" href="https://cycling.asealvin.com/zh"><span class="portal-index">03</span><span class="portal-copy"><strong>骑行</strong><small>Road &amp; distance</small></span><span class="portal-arrow" aria-hidden="true">↗</span></a>
-</nav>
+    <p class="home-hero-slogan">光线、文字与车轮，记录抵达的每一步。</p>
+    <a class="home-hero-link" href="https://photography.asealvin.com/">观看摄影作品 <span aria-hidden="true">↗</span></a>
+  </div>
+</article>
+<script>
+  (() => {
+    const manifestUrl = 'https://photography.asealvin.com/gallery.json';
+    const images = Array.from(document.querySelectorAll('.home-hero-image'));
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    const shuffle = (items) => {
+      const shuffled = [...items];
+      for (let index = shuffled.length - 1; index > 0; index -= 1) {
+        const swapIndex = Math.floor(Math.random() * (index + 1));
+        [shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
+      }
+      return shuffled;
+    };
+
+    const imageUrl = (photo) =>
+      `https://photography.asealvin.com/images/thumbs/${encodeURIComponent(photo.id)}.jpg`;
+
+    const show = (url, nextIndex) => {
+      const next = images[nextIndex];
+      const current = images[1 - nextIndex];
+      const loader = new Image();
+      loader.crossOrigin = 'anonymous';
+      loader.onload = () => {
+        next.crossOrigin = 'anonymous';
+        next.src = url;
+        next.classList.add('is-active');
+        current.classList.remove('is-active');
+      };
+      loader.src = url;
+    };
+
+    fetch(`${manifestUrl}?v=${Date.now()}`, { mode: 'cors' })
+      .then((response) => {
+        if (!response.ok) throw new Error(`Gallery request failed: ${response.status}`);
+        return response.json();
+      })
+      .then((manifest) => {
+        const photos = Array.isArray(manifest.photos) ? manifest.photos : [];
+        const preferred = photos.filter((photo) => isMobile
+          ? photo.height > photo.width
+          : photo.width > photo.height);
+        // Keep the homepage useful until the gallery has photos in both orientations.
+        const sequence = shuffle(preferred.length ? preferred : photos).map(imageUrl);
+        if (!sequence.length) return;
+
+        let sequenceIndex = 0;
+        let imageIndex = 0;
+        show(sequence[sequenceIndex], imageIndex);
+        if (sequence.length < 2 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        window.setInterval(() => {
+          sequenceIndex = (sequenceIndex + 1) % sequence.length;
+          imageIndex = 1 - imageIndex;
+          show(sequence[sequenceIndex], imageIndex);
+        }, 7000);
+      })
+      .catch((error) => console.warn('Unable to load photography background:', error));
+  })();
+</script>
 {{- end }}
