@@ -99,7 +99,7 @@ html[data-theme="dark"] .logo a img {
     isolation: isolate;
     position: relative;
     display: grid;
-    place-items: start;
+    place-items: start center;
     min-height: 100svh;
     margin: 0 calc(50% - 50vw);
     padding: clamp(7.5rem, 17vh, 11rem) clamp(1.5rem, 10vw, 11rem);
@@ -139,7 +139,7 @@ html[data-theme="dark"] .logo a img {
 
 .home-hero-content {
     width: min(100%, 620px);
-    text-align: left;
+    text-align: center;
     text-wrap: balance;
     text-shadow: 0 2px 22px rgba(0, 0, 0, .5);
 }
