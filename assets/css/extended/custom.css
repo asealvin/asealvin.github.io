@@ -90,55 +90,5 @@ html[data-theme="dark"] .logo a img {
     }
 }
 
-/* Homepage: a quiet gateway to writing, photography and cycling. */
-.asealvin-portals {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
-    margin: 0 0 28px;
-}
-
-.asealvin-portal {
-    position: relative;
-    display: flex;
-    min-height: 148px;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 20px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    color: var(--primary);
-    text-decoration: none;
-    background: var(--entry);
-    transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
-}
-
-.asealvin-portal::before {
-    position: absolute;
-    inset: auto -22px -52px auto;
-    width: 130px;
-    height: 130px;
-    border: 1px solid var(--tertiary);
-    border-radius: 50%;
-    content: "";
-    opacity: .45;
-    transition: transform 300ms ease;
-}
-
-.asealvin-portal:hover {
-    transform: translateY(-4px);
-    border-color: var(--secondary);
-    box-shadow: 0 12px 30px rgb(0 0 0 / .08);
-}
-
-.asealvin-portal:hover::before { transform: scale(1.16); }
-.portal-index, .portal-copy small { color: var(--secondary); font-size: 12px; letter-spacing: .08em; }
-.portal-copy { display: flex; flex-direction: column; gap: 4px; }
-.portal-copy strong { font-size: 21px; font-weight: 600; }
-.portal-arrow { position: absolute; top: 18px; right: 20px; color: var(--secondary); font-size: 19px; }
-
-@media screen and (max-width: 680px) {
-    .asealvin-portals { grid-template-columns: 1fr; gap: 10px; }
-    .asealvin-portal { min-height: 112px; }
-}
+/* Keep the landing page intentionally focused on the personal introduction. */
+.home-info ~ .post-entry { display: none; }
