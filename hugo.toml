@@ -40,7 +40,7 @@ enableRobotsTXT = true
 [[menu.main]]
   identifier = "photography"
   name = "摄影"
-  url = "/photography/" # 如果你有摄影页面，保留此行；没有的话可先按你原有的配置
+  url = "https://photography.asealvin.com/"
   weight = 20
 
 [[menu.main]]
@@ -48,8 +48,9 @@ enableRobotsTXT = true
   name = "骑行"
   url = "https://cycling.asealvin.com/zh"
   weight = 30
+
 [[menu.main]]
-identifier = "podcast"
+  identifier = "podcast"
   name = "播客"
-  url = "https://asealvin.firstory.cc/"  # 替换为你的 Firstory 实际链接
+  url = "https://asealvin.firstory.cc/"
   weight = 40
