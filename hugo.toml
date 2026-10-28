@@ -2,6 +2,7 @@ baseURL = 'https://asealvin.com/'
 locale = 'zh-cn'
 title = 'asealvin'
 theme = 'PaperMod'
+enableRobotsTXT = true
 
 [params]
   defaultTheme = 'auto' # 支持暗色/亮色模式切换
