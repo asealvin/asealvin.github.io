@@ -138,7 +138,7 @@ html[data-theme="dark"] .logo a img {
 }
 
 .home-hero-content {
-    width: min(100%, 620px);
+    width: min(100%, 760px);
     text-align: center;
     text-wrap: balance;
     text-shadow: 0 2px 22px rgba(0, 0, 0, .5);
