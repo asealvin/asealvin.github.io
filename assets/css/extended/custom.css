@@ -1,50 +1,209 @@
 /* Self-hosted Avenir for Latin letters and figures. Chinese glyphs continue to use the system CJK fallback. */
-@font-face { font-family: "Asealvin Avenir"; src: url("/fonts/Avenir-Regular.woff2") format("woff2"); font-style: normal; font-weight: 400; font-display: swap; }
-@font-face { font-family: "Asealvin Avenir"; src: url("/fonts/Avenir-Medium.ttf") format("truetype"); font-style: normal; font-weight: 500; font-display: swap; }
-@font-face { font-family: "Asealvin Avenir"; src: url("/fonts/Avenir-Bold.ttf") format("truetype"); font-style: normal; font-weight: 700; font-display: swap; }
-.menu a svg { display: none !important; }
-:root { --asealvin-latin-font: "Asealvin Avenir", Avenir, "Avenir Next", "Avenir Next LT Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
-body, button, input, textarea, select { font-family: var(--asealvin-latin-font); }
-.logo a { font-size: 0; }
-.logo a img { display: block; width: auto; max-height: 36px; filter: brightness(0); }
-html[data-theme="light"] .logo a img { filter: brightness(0); }
-html[data-theme="dark"] .logo a img { filter: brightness(0) invert(1); }
-@media screen and (min-width: 769px) { .header-nav { max-width: var(--main-width); } }
-.logo-switches, #theme-toggle { position: relative; z-index: 2; pointer-events: auto; }
-@media (prefers-reduced-motion: no-preference) {
-  html.theme-animating, html.theme-animating *, html.theme-animating *::before, html.theme-animating *::after { transition-property: background-color, color, border-color, box-shadow, fill, stroke; transition-duration: 280ms; transition-timing-function: ease; }
+@font-face {
+    font-family: "Asealvin Avenir";
+    src: url("/fonts/Avenir-Regular.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
 }
-/* Homepage: a visible editorial entry instead of an ambiguous blank first screen. */
-.asealvin-home { display: grid; grid-template-columns: minmax(0, .94fr) minmax(260px, 1.06fr); gap: clamp(24px, 5vw, 72px); align-items: center; margin: clamp(20px, 5vw, 58px) 0 28px; }
-.asealvin-intro { min-height: 0; margin: 0; padding: 0; border: 0; background: transparent; }
-.asealvin-kicker { margin: 0 0 16px; color: var(--secondary); font-size: 11px; font-weight: 500; letter-spacing: .14em; }
-.asealvin-intro .entry-header h1 { max-width: 9em; margin: 0; font-size: clamp(34px, 4.4vw, 58px); line-height: 1.14; }
-.asealvin-intro .entry-content { margin-top: 18px; color: var(--primary); font-size: clamp(17px, 1.65vw, 21px); }
-.asealvin-lede { max-width: 21em; margin: 14px 0 0; color: var(--secondary); line-height: 1.7; }
-.asealvin-actions { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 26px; }
-.asealvin-actions a { color: var(--primary); font-size: 14px; font-weight: 500; text-decoration: none; text-underline-offset: 5px; }
-.asealvin-actions a:hover { text-decoration: underline; }
-.asealvin-actions span { margin-left: 3px; }
-.asealvin-hero { position: relative; min-height: clamp(360px, 51vw, 590px); margin: 0; overflow: hidden; border-radius: calc(var(--radius) + 2px); background: var(--tertiary); }
-.asealvin-hero img { display: block; width: 100%; height: 100%; position: absolute; inset: 0; object-fit: cover; object-position: 50% 68%; }
-.asealvin-hero::after { position: absolute; inset: auto 0 0; height: 26%; content: ""; background: linear-gradient(transparent, rgb(0 0 0 / .42)); pointer-events: none; }
-.asealvin-hero figcaption { position: absolute; z-index: 1; right: 18px; bottom: 14px; color: #fff; font-size: 12px; letter-spacing: .08em; }
-.asealvin-portals { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 0 0 36px; }
-.asealvin-portal { position: relative; display: flex; min-height: 132px; flex-direction: column; justify-content: space-between; padding: 18px; overflow: hidden; border: 1px solid var(--border); border-radius: var(--radius); color: var(--primary); text-decoration: none; background: var(--entry); transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease; }
-.asealvin-portal::before { position: absolute; inset: auto -22px -52px auto; width: 120px; height: 120px; border: 1px solid var(--tertiary); border-radius: 50%; content: ""; opacity: .55; transition: transform 300ms ease; }
-.asealvin-portal:hover { transform: translateY(-4px); border-color: var(--secondary); box-shadow: 0 12px 30px rgb(0 0 0 / .08); }
-.asealvin-portal:hover::before { transform: scale(1.16); }
-.portal-index, .portal-copy small { color: var(--secondary); font-size: 11px; letter-spacing: .08em; }
-.portal-copy { display: flex; flex-direction: column; gap: 4px; }
-.portal-copy strong { font-size: 20px; font-weight: 600; }
-.portal-arrow { position: absolute; top: 16px; right: 18px; color: var(--secondary); font-size: 18px; }
-/* Re-enable PaperMod's current post list: it becomes the automatically updated lower section. */
-.home-info ~ .post-entry { display: block; }
-@media screen and (max-width: 680px) {
-  .asealvin-home { grid-template-columns: 1fr; gap: 26px; margin-top: 22px; }
-  .asealvin-intro .entry-header h1 { max-width: 11em; }
-  .asealvin-hero { min-height: 440px; }
-  .asealvin-hero img { object-position: 50% 74%; }
-  .asealvin-portals { grid-template-columns: 1fr; gap: 10px; }
-  .asealvin-portal { min-height: 106px; }
+
+@font-face {
+    font-family: "Asealvin Avenir";
+    src: url("/fonts/Avenir-Medium.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Asealvin Avenir";
+    src: url("/fonts/Avenir-Bold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+}
+
+/* 隐藏导航栏外部链接的箭头小图标 */
+.menu a svg {
+    display: none !important;
+}
+
+:root {
+    --asealvin-latin-font: "Asealvin Avenir", Avenir, "Avenir Next",
+        "Avenir Next LT Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
+        "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+body,
+button,
+input,
+textarea,
+select {
+    font-family: var(--asealvin-latin-font);
+}
+
+/* Personal brand mark: dark in light mode, light in dark mode. */
+.logo a {
+    font-size: 0;
+}
+
+.logo a img {
+    display: block;
+    width: auto;
+    max-height: 36px;
+    filter: brightness(0);
+}
+
+/* PaperMod stores the active appearance on the html data-theme attribute. */
+html[data-theme="light"] .logo a img {
+    filter: brightness(0);
+}
+
+html[data-theme="dark"] .logo a img {
+    filter: brightness(0) invert(1);
+}
+
+/* Align the logo, theme switcher, and navigation with the article column. */
+@media screen and (min-width: 769px) {
+    .header-nav {
+        max-width: var(--main-width);
+    }
+}
+
+/* Keep the theme control above the navigation hit area. */
+.logo-switches,
+#theme-toggle {
+    position: relative;
+    z-index: 2;
+    pointer-events: auto;
+}
+
+/* Smoothly blend the site palette only while the user changes theme. */
+@media (prefers-reduced-motion: no-preference) {
+    html.theme-animating,
+    html.theme-animating *,
+    html.theme-animating *::before,
+    html.theme-animating *::after {
+        transition-property: background-color, color, border-color, box-shadow, fill, stroke;
+        transition-duration: 280ms;
+        transition-timing-function: ease;
+    }
+}
+
+/* Keep the landing page intentionally focused on the personal introduction. */
+.home-info ~ .post-entry { display: none; }
+
+/* A different randomly ordered set is selected from the photography site on each visit.
+   The image layer is deliberately kept outside the content layer for legibility. */
+.home-hero {
+    isolation: isolate;
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: min(760px, calc(100vh - 74px));
+    margin: 0 calc(50% - 50vw);
+    padding: clamp(5rem, 12vw, 10rem) 1.5rem;
+    overflow: hidden;
+    border-radius: 0;
+    color: #fff;
+    background: #171614;
+}
+
+.home-hero-media,
+.home-hero-shade {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+}
+
+.home-hero-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transform: scale(1.03);
+    transition: opacity 1.4s ease, transform 7s ease;
+}
+
+.home-hero-image.is-active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.home-hero-shade {
+    z-index: -1;
+    background: linear-gradient(115deg, rgba(7, 7, 6, .72), rgba(7, 7, 6, .25) 65%, rgba(7, 7, 6, .42));
+}
+
+.home-hero-content {
+    width: min(100%, 680px);
+    text-align: center;
+    text-wrap: balance;
+    text-shadow: 0 2px 22px rgba(0, 0, 0, .5);
+}
+
+.home-hero .entry-header h1 {
+    margin: 0;
+    color: inherit;
+    font-size: clamp(2.5rem, 6vw, 5.2rem);
+    font-weight: 500;
+    line-height: 1.06;
+    letter-spacing: -.045em;
+}
+
+.home-hero .entry-content {
+    margin-top: 1.15rem;
+    color: rgba(255, 255, 255, .88);
+    font-size: clamp(1rem, 2vw, 1.22rem);
+}
+
+.home-hero-slogan {
+    margin: .7rem auto 0;
+    color: rgba(255, 255, 255, .7);
+    font-size: .92rem;
+}
+
+.home-hero-kicker {
+    margin: 0 0 1.2rem;
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+}
+
+.home-hero-link {
+    display: inline-flex;
+    gap: .45rem;
+    align-items: center;
+    margin-top: 2.1rem;
+    padding: .72rem 1.05rem;
+    border: 1px solid rgba(255, 255, 255, .72);
+    border-radius: 999px;
+    color: #fff;
+    font-size: .86rem;
+    text-decoration: none;
+    text-shadow: none;
+    transition: background-color .2s ease, color .2s ease;
+}
+
+.home-hero-link:hover {
+    background: #fff;
+    color: #151515;
+}
+
+@media (max-width: 768px) {
+    .home-hero {
+        min-height: calc(100svh - 64px);
+        padding-inline: 1.25rem;
+    }
+
+    .home-hero-shade {
+        background: linear-gradient(180deg, rgba(7, 7, 6, .35), rgba(7, 7, 6, .62));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .home-hero-image { transition: none; }
 }
