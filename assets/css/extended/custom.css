@@ -14,14 +14,18 @@
     filter: brightness(0);
 }
 
-/* PaperMod marks dark mode on body, not an ancestor .dark container. */
-body.dark .logo a img {
+/* PaperMod stores the active appearance on the html data-theme attribute. */
+html[data-theme="light"] .logo a img {
+    filter: brightness(0);
+}
+
+html[data-theme="dark"] .logo a img {
     filter: brightness(0) invert(1);
 }
 
-/* Keep the brand and theme control aligned with the article column on desktop. */
+/* Align the logo, theme switcher, and navigation with the article column. */
 @media screen and (min-width: 769px) {
-    .nav {
+    .header-nav {
         max-width: var(--main-width);
     }
 }
