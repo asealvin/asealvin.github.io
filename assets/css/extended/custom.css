@@ -99,7 +99,7 @@ html[data-theme="dark"] .logo a img {
     isolation: isolate;
     position: relative;
     display: grid;
-    place-items: start center;
+    place-items: center;
     min-height: 100svh;
     margin: 0 calc(50% - 50vw);
     padding: clamp(7.5rem, 17vh, 11rem) clamp(1.5rem, 10vw, 11rem);
