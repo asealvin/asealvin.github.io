@@ -1,0 +1,26 @@
+{{- with site.Params.homeInfoParams }}
+<article class="first-entry home-info">
+  <header class="entry-header">
+    <h1>{{ .Title | markdownify }}</h1>
+  </header>
+  <div class="entry-content">{{ .Content | markdownify }}</div>
+</article>
+{{- end }}
+
+<section class="asealvin-portals" aria-label="内容入口">
+  <a class="asealvin-portal portal-writing" href="/posts/">
+    <span class="portal-index">01</span>
+    <span class="portal-copy"><strong>文章</strong><small>Thoughts &amp; notes</small></span>
+    <span class="portal-arrow" aria-hidden="true">↗</span>
+  </a>
+  <a class="asealvin-portal portal-photography" href="https://photography.asealvin.com/">
+    <span class="portal-index">02</span>
+    <span class="portal-copy"><strong>摄影</strong><small>Light &amp; everyday</small></span>
+    <span class="portal-arrow" aria-hidden="true">↗</span>
+  </a>
+  <a class="asealvin-portal portal-cycling" href="https://cycling.asealvin.com/zh">
+    <span class="portal-index">03</span>
+    <span class="portal-copy"><strong>骑行</strong><small>Road &amp; distance</small></span>
+    <span class="portal-arrow" aria-hidden="true">↗</span>
+  </a>
+</section>
