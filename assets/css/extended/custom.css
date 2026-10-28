@@ -271,3 +271,27 @@ body.list:has(.home-hero) .footer {
   .home-hero .entry-header h1 { font-size: clamp(2.25rem, 5vw, 4.4rem); white-space: nowrap; }
   .home-hero .entry-content, .home-hero .entry-content p { white-space: nowrap; }
 }
+
+/* Shared navigation scale on the landing page and article pages. */
+.header .menu {
+    gap: 1.05rem;
+}
+.header .menu a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.8rem;
+    padding: .15rem 0;
+    font-size: .82rem;
+    font-weight: 500;
+}
+.header .menu li + li {
+    margin-inline-start: 0;
+}
+@media (max-width: 768px) {
+    .header .menu { gap: .7rem; }
+    .header .menu a {
+        min-height: 1.7rem;
+        padding-inline: 0;
+        font-size: .72rem;
+    }
+}
