@@ -14,6 +14,14 @@
     filter: brightness(0);
 }
 
-.dark .logo a img {
+/* PaperMod marks dark mode on body, not an ancestor .dark container. */
+body.dark .logo a img {
     filter: brightness(0) invert(1);
+}
+
+/* Keep the brand and theme control aligned with the article column on desktop. */
+@media screen and (min-width: 769px) {
+    .nav {
+        max-width: var(--main-width);
+    }
 }
