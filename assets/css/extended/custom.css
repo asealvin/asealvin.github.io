@@ -220,6 +220,33 @@ body.list:has(.home-hero) .header {
     background: linear-gradient(180deg, rgba(0, 0, 0, .48), transparent);
 }
 
+body.list:has(.home-hero) .menu {
+    gap: .55rem;
+}
+
+body.list:has(.home-hero) .menu a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.2rem;
+    padding: .35rem .78rem;
+    border: 1px solid rgba(255, 255, 255, .45);
+    border-radius: 999px;
+    background: rgba(0, 0, 0, .18);
+    color: #fff;
+    font-size: .86rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+body.list:has(.home-hero) .menu a:hover,
+body.list:has(.home-hero) .menu a:focus-visible {
+    border-color: #fff;
+    background: rgba(255, 255, 255, .2);
+    outline: none;
+    transform: translateY(-1px);
+}
+
 body.list:has(.home-hero) .main {
     max-width: none;
     margin: 0;
@@ -228,4 +255,16 @@ body.list:has(.home-hero) .main {
 
 body.list:has(.home-hero) .footer {
     display: none;
+}
+
+@media (max-width: 768px) {
+    body.list:has(.home-hero) .menu {
+        gap: .32rem;
+    }
+
+    body.list:has(.home-hero) .menu a {
+        min-height: 2rem;
+        padding-inline: .55rem;
+        font-size: .78rem;
+    }
 }
