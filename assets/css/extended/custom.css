@@ -100,7 +100,7 @@ html[data-theme="dark"] .logo a img {
     position: relative;
     display: grid;
     place-items: center;
-    min-height: min(760px, calc(100vh - 74px));
+    min-height: 100svh;
     margin: 0 calc(50% - 50vw);
     padding: clamp(5rem, 12vw, 10rem) 1.5rem;
     overflow: hidden;
@@ -195,7 +195,7 @@ html[data-theme="dark"] .logo a img {
 
 @media (max-width: 768px) {
     .home-hero {
-        min-height: calc(100svh - 64px);
+        min-height: 100svh;
         padding-inline: 1.25rem;
     }
 
@@ -206,4 +206,26 @@ html[data-theme="dark"] .logo a img {
 
 @media (prefers-reduced-motion: reduce) {
     .home-hero-image { transition: none; }
+}
+
+/* The homepage is a single full-bleed canvas; navigation remains accessible above it. */
+body.list:has(.home-hero) {
+    min-height: 100svh;
+}
+
+body.list:has(.home-hero) .header {
+    position: absolute;
+    z-index: 3;
+    width: 100%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, .48), transparent);
+}
+
+body.list:has(.home-hero) .main {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+}
+
+body.list:has(.home-hero) .footer {
+    display: none;
 }
