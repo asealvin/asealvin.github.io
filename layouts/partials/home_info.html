@@ -53,11 +53,9 @@
         const preferred = photos.filter((photo) => isMobile
           ? photo.height > photo.width
           : photo.width > photo.height);
-        // Prefer portrait images on phones and landscapes on desktop. If the
-        // gallery has fewer than two in that orientation, use the remaining
-        // photos as a fallback so the two-second carousel always keeps moving.
-        const source = preferred.length >= 2 ? preferred : photos;
-        const sequence = shuffle(source).map(imageUrl);
+        // Phones use only portrait photos; desktop uses only landscapes.
+        // A single matching image remains still until more are uploaded.
+        const sequence = shuffle(preferred).map(imageUrl);
         if (!sequence.length) return;
 
         let sequenceIndex = 0;
