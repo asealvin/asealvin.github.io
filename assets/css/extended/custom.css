@@ -2,3 +2,18 @@
 .menu a svg {
     display: none !important;
 }
+/* Personal brand mark: dark in light mode, light in dark mode. */
+.logo a {
+    font-size: 0;
+}
+
+.logo a img {
+    display: block;
+    width: auto;
+    max-height: 36px;
+    filter: brightness(0);
+}
+
+.dark .logo a img {
+    filter: brightness(0) invert(1);
+}
