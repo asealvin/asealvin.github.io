@@ -7,6 +7,22 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: "Asealvin Avenir";
+    src: url("/fonts/Avenir-Medium.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Asealvin Avenir";
+    src: url("/fonts/Avenir-Bold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+}
+
 /* 隐藏导航栏外部链接的箭头小图标 */
 .menu a svg {
     display: none !important;
