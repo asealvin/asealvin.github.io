@@ -1,4 +1,4 @@
-/* Self-hosted Avenir for Latin letters and figures. Chinese glyphs continue to use the system CJK fallback. */
+/* Self-hosted Avenir for Latin letters and figures. Chinese glyphs use self-hosted PingFang SC. */
 @font-face {
     font-family: "Asealvin Avenir";
     src: url("/fonts/Avenir-Regular.woff2") format("woff2");
@@ -23,15 +23,63 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: "Asealvin PingFang SC";
+    src: url("/PingFangSC-Ultralight.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 100;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Asealvin PingFang SC";
+    src: url("/PingFangSC-Thin.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 200;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Asealvin PingFang SC";
+    src: url("/PingFangSC-Light.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Asealvin PingFang SC";
+    src: url("/PingFangSC-Regular.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Asealvin PingFang SC";
+    src: url("/PingFangSC-Medium.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Asealvin PingFang SC";
+    src: url("/PingFangSC-Semibold.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 600 900;
+    font-display: swap;
+}
+
 /* 隐藏导航栏外部链接的箭头小图标 */
 .menu a svg {
     display: none !important;
 }
 
 :root {
-    --asealvin-latin-font: "Asealvin Avenir", Avenir, "Avenir Next",
-        "Avenir Next LT Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
-        "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    --asealvin-font: "Asealvin Avenir", "Asealvin PingFang SC", Avenir,
+        "Avenir Next", "Avenir Next LT Pro", -apple-system, BlinkMacSystemFont,
+        "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
     --editorial-accent: #c9a36a;
     --editorial-accent-bright: #e0b87d;
 }
@@ -41,7 +89,7 @@ button,
 input,
 textarea,
 select {
-    font-family: var(--asealvin-latin-font);
+    font-family: var(--asealvin-font);
 }
 
 /* Personal brand mark: dark in light mode, light in dark mode. */
