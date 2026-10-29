@@ -1,15 +1,31 @@
 <footer class="footer"><span>&copy; 2026 asealvin</span></footer>
 <script>
-  document.getElementById('theme-toggle')?.addEventListener('click', () => {
-    const root = document.documentElement
+(() => {
+  const root = document.documentElement
+  const toggle = document.getElementById('theme-toggle')
+  const changeTheme = () => {
     const nextTheme = root.dataset.theme === 'dark' ? 'light' : 'dark'
 
     root.classList.add('theme-animating')
     root.dataset.theme = nextTheme
     localStorage.setItem('pref-theme', nextTheme)
-
     window.setTimeout(() => root.classList.remove('theme-animating'), 360)
+  }
+
+  if (!toggle) return
+
+  toggle.addEventListener('click', event => {
+    event.preventDefault()
+
+    const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+    if (!document.startViewTransition || reduceMotion) {
+      changeTheme()
+      return
+    }
+
+    document.startViewTransition(changeTheme)
   })
+})()
 </script>
 <script>
 (() => {
