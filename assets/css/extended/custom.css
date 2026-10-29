@@ -32,6 +32,8 @@
     --asealvin-latin-font: "Asealvin Avenir", Avenir, "Avenir Next",
         "Avenir Next LT Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
         "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    --editorial-accent: #c9a36a;
+    --editorial-accent-bright: #e0b87d;
 }
 
 body,
@@ -76,18 +78,6 @@ html[data-theme="dark"] .logo a img {
     position: relative;
     z-index: 2;
     pointer-events: auto;
-}
-
-/* Smoothly blend the site palette only while the user changes theme. */
-@media (prefers-reduced-motion: no-preference) {
-    html.theme-animating,
-    html.theme-animating *,
-    html.theme-animating *::before,
-    html.theme-animating *::after {
-        transition-property: background-color, color, border-color, box-shadow, fill, stroke;
-        transition-duration: 280ms;
-        transition-timing-function: ease;
-    }
 }
 
 /* Keep the landing page intentionally focused on the personal introduction. */
@@ -186,50 +176,6 @@ body.list:has(.home-hero) .header {
     background: linear-gradient(180deg, rgba(0, 0, 0, .48), transparent);
 }
 
-body.list:has(.home-hero) .menu {
-    gap: 1.05rem;
-}
-
-body.list:has(.home-hero) .menu a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 1.8rem;
-    padding: .15rem 0;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    color: #fff;
-    font-size: .82rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: color .2s ease;
-}
-
-body.list:has(.home-hero) .menu a:hover,
-body.list:has(.home-hero) .menu a:focus-visible {
-    color: rgba(255, 255, 255, .72);
-    outline: none;
-    transform: none;
-}
-
-body.list:has(.home-hero) .menu a::after {
-    position: absolute;
-    right: 0;
-    bottom: -.1rem;
-    left: 0;
-    height: 1px;
-    content: '';
-    background: currentColor;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform .2s ease;
-}
-
-body.list:has(.home-hero) .menu a:hover::after,
-body.list:has(.home-hero) .menu a:focus-visible::after {
-    transform: scaleX(1);
-}
-
 body.list:has(.home-hero) .main {
     max-width: none;
     margin: 0;
@@ -251,15 +197,114 @@ body.list:has(.home-hero) .footer {
     text-shadow: 0 1px 6px rgba(0, 0, 0, .65);
 }
 
-@media (max-width: 768px) {
-    .logo a img { max-height: 20px; }
+/* Shared, restrained controls: bare buttons, muted defaults, amber feedback. */
+.header .menu {
+    gap: 1.05rem;
+}
+
+.header .menu a,
+body.list:has(.home-hero) .menu a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.8rem;
+    padding: .15rem 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    font-size: .82rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color .3s ease, opacity .3s ease;
+}
+
+.header .menu a {
+    color: var(--secondary);
+}
+
+body.list:has(.home-hero) .menu a {
+    color: rgba(255, 255, 255, .78);
+}
+
+.header .menu li + li {
+    margin-inline-start: 0;
+}
+
+.header .menu a::after,
+body.list:has(.home-hero) .menu a::after {
+    position: absolute;
+    right: 0;
+    bottom: -.1rem;
+    left: 0;
+    height: 1px;
+    content: '';
+    background: var(--editorial-accent);
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: opacity .3s ease, transform .3s ease;
+}
+
+.header .menu a:hover,
+.header .menu a:focus-visible,
+body.list:has(.home-hero) .menu a:hover,
+body.list:has(.home-hero) .menu a:focus-visible {
+    color: var(--editorial-accent-bright);
+    opacity: 1;
+    outline: none;
+    transform: none;
+}
+
+.header .menu a:hover::after,
+.header .menu a:focus-visible::after,
+body.list:has(.home-hero) .menu a:hover::after,
+body.list:has(.home-hero) .menu a:focus-visible::after {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+.header .menu a:focus-visible,
+body.list:has(.home-hero) .menu a:focus-visible {
+    outline: 2px solid var(--editorial-accent);
+    outline-offset: 4px;
+}
+
+#theme-toggle {
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--secondary);
+    transition: color .3s ease, opacity .3s ease;
+}
+
+body.list:has(.home-hero) #theme-toggle {
+    color: rgba(255, 255, 255, .78);
+}
+
+#theme-toggle:hover,
+#theme-toggle:focus-visible {
+    color: var(--editorial-accent-bright);
+    opacity: 1;
+    outline: none;
+    transform: none;
+}
+
+#theme-toggle:focus-visible {
+    outline: 2px solid var(--editorial-accent);
+    outline-offset: 4px;
+}
+
+#theme-toggle:active {
+    transform: none;
 }
 
 @media (max-width: 768px) {
-    body.list:has(.home-hero) .menu {
-        gap: .7rem;
-    }
+    .logo a img { max-height: 20px; }
 
+    .header .menu,
+    body.list:has(.home-hero) .menu { gap: .7rem; }
+
+    .header .menu a,
     body.list:has(.home-hero) .menu a {
         min-height: 1.7rem;
         padding-inline: 0;
@@ -268,90 +313,44 @@ body.list:has(.home-hero) .footer {
 }
 
 @media (min-width: 769px) {
-  .home-hero .entry-header h1 { font-size: clamp(2.25rem, 5vw, 4.4rem); white-space: nowrap; }
-  .home-hero .entry-content, .home-hero .entry-content p { white-space: nowrap; }
+    .home-hero .entry-header h1 { font-size: clamp(2.25rem, 5vw, 4.4rem); white-space: nowrap; }
+    .home-hero .entry-content, .home-hero .entry-content p { white-space: nowrap; }
 }
 
-/* Shared navigation scale on the landing page and article pages. */
-.header .menu {
-    gap: 1.05rem;
-}
-.header .menu a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 1.8rem;
-    padding: .15rem 0;
-    font-size: .82rem;
-    font-weight: 500;
-}
-.header .menu li + li {
-    margin-inline-start: 0;
-}
-@media (max-width: 768px) {
-    .header .menu { gap: .7rem; }
-    .header .menu a {
-        min-height: 1.7rem;
-        padding-inline: 0;
-        font-size: .72rem;
-    }
-}
-
-/* Consistent keyboard and touch feedback across navigation. */
-.header .menu a:focus-visible,
-body.list:has(.home-hero) .menu a:focus-visible {
-    outline: 2px solid currentColor;
-    outline-offset: 4px;
-}
 @media (pointer: coarse) {
     .header .menu a,
     body.list:has(.home-hero) .menu a { min-height: 44px; }
+
     #theme-toggle { min-width: 44px; min-height: 44px; }
 }
 
+/* View Transitions API: same radial theme reveal used by the cycling dashboard. */
+@media (prefers-reduced-motion: no-preference) {
+    ::view-transition-group(root) {
+        animation-duration: .8s;
+        animation-timing-function: cubic-bezier(.22, 1, .36, 1);
+    }
 
-/* Navigation and theme control use the same restrained motion language as photography. */
-.header .menu a {
-    position: relative;
-    transition: color .3s ease, transform .3s cubic-bezier(.19, 1, .22, 1), opacity .3s ease;
+    ::view-transition-new(root) {
+        z-index: 1;
+        animation: asealvin-theme-reveal .8s ease-out both;
+        transform-origin: top right;
+        mask: radial-gradient(circle at top right, #000 0 0) top right / 0 0 no-repeat;
+    }
+
+    ::view-transition-old(root) {
+        z-index: 0;
+        animation: asealvin-theme-fade-out .8s ease-out both;
+        transform-origin: top right;
+    }
 }
 
-.header .menu a::after {
-    position: absolute;
-    right: 0;
-    bottom: -.1rem;
-    left: 0;
-    height: 1px;
-    content: '';
-    background: currentColor;
-    opacity: 0;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: opacity .35s ease, transform .35s cubic-bezier(.19, 1, .22, 1);
+@keyframes asealvin-theme-reveal {
+    to { mask-size: 350vmax 350vmax; }
 }
 
-.header .menu a:hover,
-.header .menu a:focus-visible {
-    transform: translateY(-1px);
-}
-
-.header .menu a:hover::after,
-.header .menu a:focus-visible::after {
-    opacity: .7;
-    transform: scaleX(1);
-}
-
-#theme-toggle {
-    border-radius: 999px;
-    transition: transform .3s cubic-bezier(.19, 1, .22, 1), opacity .3s ease, background-color .3s ease;
-}
-
-#theme-toggle:hover {
-    transform: translateY(-1px) rotate(8deg);
-    opacity: .72;
-}
-
-#theme-toggle:active {
-    transform: translateY(0) scale(.94);
+@keyframes asealvin-theme-fade-out {
+    to { opacity: 0; transform: scale(1.02); }
 }
 
 @media (prefers-reduced-motion: reduce) {
