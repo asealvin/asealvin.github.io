@@ -2,29 +2,17 @@
 <script>
 (() => {
   const root = document.documentElement
-  const toggle = document.getElementById('theme-toggle')
-  const changeTheme = () => {
-    const nextTheme = root.dataset.theme === 'dark' ? 'light' : 'dark'
+  const colorScheme = window.matchMedia('(prefers-color-scheme: dark)')
 
-    root.classList.add('theme-animating')
+  const syncThemeWithDevice = () => {
+    const nextTheme = colorScheme.matches ? 'dark' : 'light'
     root.dataset.theme = nextTheme
-    localStorage.setItem('pref-theme', nextTheme)
-    window.setTimeout(() => root.classList.remove('theme-animating'), 360)
+    localStorage.removeItem('pref-theme')
   }
 
-  if (!toggle) return
-
-  toggle.addEventListener('click', event => {
-    event.preventDefault()
-
-    const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
-    if (!document.startViewTransition || reduceMotion) {
-      changeTheme()
-      return
-    }
-
-    document.startViewTransition(changeTheme)
-  })
+  // The original control remains in the template, but the site now follows the device.
+  syncThemeWithDevice()
+  colorScheme.addEventListener?.('change', syncThemeWithDevice)
 })()
 </script>
 <script>
