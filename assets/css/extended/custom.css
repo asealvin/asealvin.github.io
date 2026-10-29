@@ -358,3 +358,7 @@ body.list:has(.home-hero) #theme-toggle {
     .header .menu a::after,
     #theme-toggle { transition: none; }
 }
+
+
+/* Theme follows the device preference; keep the existing toggle markup out of view. */
+#theme-toggle { display: none !important; }
