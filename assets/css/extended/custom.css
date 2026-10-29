@@ -307,3 +307,55 @@ body.list:has(.home-hero) .menu a:focus-visible {
     body.list:has(.home-hero) .menu a { min-height: 44px; }
     #theme-toggle { min-width: 44px; min-height: 44px; }
 }
+
+
+/* Navigation and theme control use the same restrained motion language as photography. */
+.header .menu a {
+    position: relative;
+    transition: color .3s ease, transform .3s cubic-bezier(.19, 1, .22, 1), opacity .3s ease;
+}
+
+.header .menu a::after {
+    position: absolute;
+    right: 0;
+    bottom: -.1rem;
+    left: 0;
+    height: 1px;
+    content: '';
+    background: currentColor;
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: opacity .35s ease, transform .35s cubic-bezier(.19, 1, .22, 1);
+}
+
+.header .menu a:hover,
+.header .menu a:focus-visible {
+    transform: translateY(-1px);
+}
+
+.header .menu a:hover::after,
+.header .menu a:focus-visible::after {
+    opacity: .7;
+    transform: scaleX(1);
+}
+
+#theme-toggle {
+    border-radius: 999px;
+    transition: transform .3s cubic-bezier(.19, 1, .22, 1), opacity .3s ease, background-color .3s ease;
+}
+
+#theme-toggle:hover {
+    transform: translateY(-1px) rotate(8deg);
+    opacity: .72;
+}
+
+#theme-toggle:active {
+    transform: translateY(0) scale(.94);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .header .menu a,
+    .header .menu a::after,
+    #theme-toggle { transition: none; }
+}
