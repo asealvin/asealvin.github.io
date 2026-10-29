@@ -388,3 +388,104 @@ body.list:has(.home-hero) #theme-toggle {
         -ms-overflow-style: none;
     }
 }
+
+
+/* Article pages: photography-inspired warm editorial controls, without changing reading behavior. */
+.post-single .post-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.35rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--editorial-accent) 38%, var(--border));
+}
+
+.post-single .post-title {
+    letter-spacing: -.025em;
+}
+
+.post-single .post-meta,
+.post-single .breadcrumbs {
+    color: var(--secondary);
+}
+
+.post-single .post-content a {
+    color: var(--editorial-accent);
+    text-decoration-color: color-mix(in srgb, var(--editorial-accent) 55%, transparent);
+    text-underline-offset: .2em;
+    transition: color .24s ease, text-decoration-color .24s ease;
+}
+
+.post-single .post-content a:hover,
+.post-single .post-content a:focus-visible {
+    color: var(--editorial-accent-bright);
+    text-decoration-color: currentColor;
+}
+
+.post-single .toc {
+    border: 1px solid color-mix(in srgb, var(--editorial-accent) 34%, var(--border));
+    border-radius: 0;
+    background: color-mix(in srgb, var(--code-bg) 82%, var(--editorial-accent));
+}
+
+.post-single .toc summary {
+    color: var(--primary);
+    letter-spacing: .05em;
+    text-transform: uppercase;
+}
+
+.post-single .toc a {
+    color: var(--secondary);
+    transition: color .24s ease, padding-inline-start .24s ease;
+}
+
+.post-single .toc a:hover,
+.post-single .toc a:focus-visible {
+    color: var(--editorial-accent-bright);
+    padding-inline-start: .25rem;
+}
+
+.post-single .share-buttons a,
+.post-single .paginav a {
+    border: 1px solid color-mix(in srgb, var(--editorial-accent) 42%, var(--border));
+    border-radius: 0;
+    background: transparent;
+    transition: border-color .24s ease, color .24s ease, background-color .24s ease, transform .24s ease;
+}
+
+.post-single .share-buttons a:hover,
+.post-single .share-buttons a:focus-visible,
+.post-single .paginav a:hover,
+.post-single .paginav a:focus-visible {
+    border-color: var(--editorial-accent);
+    background: color-mix(in srgb, var(--editorial-accent) 11%, transparent);
+    color: var(--editorial-accent-bright);
+    outline: none;
+    transform: translateY(-2px);
+}
+
+.post-single .paginav a:active,
+.post-single .share-buttons a:active {
+    transform: translateY(0) scale(.98);
+}
+
+.post-single .post-tags a {
+    border: 1px solid color-mix(in srgb, var(--editorial-accent) 38%, var(--border));
+    border-radius: 0;
+    background: transparent;
+    color: var(--secondary);
+    transition: border-color .24s ease, color .24s ease, background-color .24s ease;
+}
+
+.post-single .post-tags a:hover,
+.post-single .post-tags a:focus-visible {
+    border-color: var(--editorial-accent);
+    background: color-mix(in srgb, var(--editorial-accent) 11%, transparent);
+    color: var(--editorial-accent-bright);
+    outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .post-single .post-content a,
+    .post-single .toc a,
+    .post-single .share-buttons a,
+    .post-single .paginav a,
+    .post-single .post-tags a { transition: none; }
+}
