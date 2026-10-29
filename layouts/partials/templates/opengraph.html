@@ -1,0 +1,28 @@
+{{- /* Explicit, stable social metadata.  WeChat uses these without executing page JavaScript. */ -}}
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ site.Title | plainify }}">
+<meta property="og:title" content="{{ .Title | default site.Title | plainify }}">
+<meta property="og:description" content="{{ with or .Description .Summary site.Params.description }}{{ . | plainify | htmlUnescape | strings.TrimSpace }}{{ else }}{{ .Title | plainify }}{{ end }}">
+<meta property="og:locale" content="{{ replace (or .Params.locale site.Language.Locale) `-` `_` }}">
+{{- if .IsPage }}
+<meta property="og:type" content="article">
+{{- with .Section }}<meta property="article:section" content="{{ . }}">{{ end }}
+{{- $ISO8601 := "2006-01-02T15:04:05-07:00" }}
+{{- with .PublishDate }}<meta property="article:published_time" {{ .Format $ISO8601 | printf "content=%q" | safeHTMLAttr }}>{{ end }}
+{{- else }}
+<meta property="og:type" content="website">
+{{- end }}
+{{- if .Params.cover.image }}
+  {{- if ne .Params.cover.relative true }}
+<meta property="og:image" content="{{ .Params.cover.image | absURL }}">
+  {{- else }}
+<meta property="og:image" content="{{ (path.Join .RelPermalink .Params.cover.image) | absURL }}">
+  {{- end }}
+{{- else }}
+<meta property="og:image" content="{{ "/images/asealvin-logo.png" | absURL }}">
+<meta property="og:image:secure_url" content="{{ "/images/asealvin-logo.png" | absURL }}">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="4107">
+<meta property="og:image:height" content="1613">
+<meta property="og:image:alt" content="asealvin">
+{{- end }}
