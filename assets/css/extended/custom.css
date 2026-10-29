@@ -362,3 +362,29 @@ body.list:has(.home-hero) #theme-toggle {
 
 /* Theme follows the device preference; keep the existing toggle markup out of view. */
 #theme-toggle { display: none !important; }
+
+
+/* PaperMod makes menu overflow scrollable by default; keep navigation clean. */
+.header .menu {
+    overflow: visible;
+    scrollbar-width: none;
+}
+
+.header .menu::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+@media (max-width: 480px) {
+    .header-nav {
+        flex-wrap: nowrap;
+        column-gap: .6rem;
+    }
+
+    .header .menu {
+        min-width: 0;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -ms-overflow-style: none;
+    }
+}
