@@ -1,0 +1,13 @@
+{{- if .Params.cover.image -}}
+<meta name="twitter:card" content="summary_large_image">
+{{- if ne .Params.cover.relative true }}
+<meta name="twitter:image" content="{{ .Params.cover.image | absURL }}">
+{{- else }}
+<meta name="twitter:image" content="{{ (path.Join .RelPermalink .Params.cover.image) | absURL }}">
+{{- end }}
+{{- else }}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{{ "/images/asealvin-logo.png" | absURL }}">
+{{- end }}
+<meta name="twitter:title" content="{{ .Title | default site.Title | plainify }}">
+<meta name="twitter:description" content="{{ with or .Description .Summary site.Params.description }}{{ . | plainify | htmlUnescape | strings.TrimSpace }}{{ else }}{{ .Title | plainify }}{{ end }}">
