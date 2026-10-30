@@ -560,3 +560,7 @@ body.list:has(.home-hero) #theme-toggle {
 .annual-recap-notes a { color: var(--primary); text-decoration-color: color-mix(in srgb, var(--editorial-accent) 65%, transparent); text-underline-offset: .2em; }
 .annual-recap-empty { color: var(--secondary); }
 @media (max-width: 768px) { .annual-recap { padding: 3.5rem 0 5rem; } .annual-recap-stats { grid-template-columns: 1fr; } }
+
+.annual-recap-actions { display: flex; align-items: center; gap: .4rem; }
+.annual-recap-export { padding: .45rem .65rem; border: 1px solid color-mix(in srgb, var(--editorial-accent) 45%, var(--border)); background: transparent; color: var(--secondary); font: inherit; font-size: .78rem; cursor: pointer; transition: color .24s ease, border-color .24s ease, background-color .24s ease; }
+.annual-recap-export:hover, .annual-recap-export:focus-visible { border-color: var(--editorial-accent); background: color-mix(in srgb, var(--editorial-accent) 11%, transparent); color: var(--editorial-accent-bright); outline: none; }
