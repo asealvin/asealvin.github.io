@@ -24,7 +24,7 @@
           <p class="annual-recap-kicker">{{ .Key }}</p>
           <h2>{{ .Key }} 年写作回顾</h2>
         </div>
-        <a class="annual-recap-share" href="#year-{{ .Key }}" aria-label="链接到 {{ .Key }} 年回顾">#</a>
+        <div class="annual-recap-actions"><button class="annual-recap-export" type="button" data-annual-export data-year="{{ .Key }}">导出图片</button><a class="annual-recap-share" href="#year-{{ .Key }}" aria-label="链接到 {{ .Key }} 年回顾">#</a></div>
       </div>
       <dl class="annual-recap-stats">
         <div><dt>发布文章</dt><dd>{{ len .Pages }}</dd><span>篇</span></div>
@@ -40,4 +40,5 @@
     <p class="annual-recap-empty">第一篇文章发布后，这里会自动出现年度回顾。</p>
   {{- end }}
 </article>
+<script src="/js/annual-share.js"></script>
 {{- end }}
