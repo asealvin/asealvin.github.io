@@ -564,3 +564,13 @@ body.list:has(.home-hero) #theme-toggle {
 .annual-recap-actions { display: flex; align-items: center; gap: .4rem; }
 .annual-recap-export { padding: .45rem .65rem; border: 1px solid color-mix(in srgb, var(--editorial-accent) 45%, var(--border)); background: transparent; color: var(--secondary); font: inherit; font-size: .78rem; cursor: pointer; transition: color .24s ease, border-color .24s ease, background-color .24s ease; }
 .annual-recap-export:hover, .annual-recap-export:focus-visible { border-color: var(--editorial-accent); background: color-mix(in srgb, var(--editorial-accent) 11%, transparent); color: var(--editorial-accent-bright); outline: none; }
+
+.annual-life { margin-top: 4rem; padding: 2rem 0; border-top: 1px solid color-mix(in srgb, var(--editorial-accent) 38%, var(--border)); }
+.annual-life-intro { max-width: 62ch; margin: 1rem 0 2rem; color: var(--secondary); }
+#annual-life-year { padding: .45rem .6rem; border: 1px solid color-mix(in srgb, var(--editorial-accent) 45%, var(--border)); background: var(--theme); color: var(--primary); font: inherit; font-size: .78rem; }
+.annual-life-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.annual-life-grid > article { padding: 1.35rem; border: 1px solid color-mix(in srgb, var(--editorial-accent) 33%, var(--border)); background: color-mix(in srgb, var(--code-bg) 86%, var(--editorial-accent)); }
+.annual-life-grid h3 { margin: .2rem 0 1.4rem; font-size: 1.35rem; }
+.annual-life-grid dl { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1rem; }
+.annual-life-grid dt { color: var(--secondary); font-size: .76rem; }.annual-life-grid dd { margin: .25rem 0 0; font-weight: 600; }
+@media (max-width: 650px) { .annual-life-grid { grid-template-columns: 1fr; } .annual-life-grid dl { grid-template-columns: 1fr 1fr; } }
