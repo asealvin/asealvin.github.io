@@ -39,6 +39,14 @@
   {{- else }}
     <p class="annual-recap-empty">第一篇文章发布后，这里会自动出现年度回顾。</p>
   {{- end }}
+
+  <section id="life" class="annual-life" aria-labelledby="annual-life-title">
+    <div class="annual-recap-year-top"><div><p class="annual-recap-kicker">ASEALVIN · DIGITAL LIFE</p><h2 id="annual-life-title">光影与轮迹</h2></div><div class="annual-recap-actions"><select id="annual-life-year" aria-label="选择年份"></select><button class="annual-recap-export" type="button" id="annual-life-export">导出年度图片</button></div></div>
+    <p class="annual-life-intro">摄影与骑行会随上传和同步自动更新；仅汇总年度数字，不暴露路线细节。</p>
+    <div id="annual-life-grid" class="annual-life-grid" aria-live="polite"></div>
+  </section>
+
 </article>
 <script src="/js/annual-share.js"></script>
+<script src="/js/annual-life.js"></script>
 {{- end }}
