@@ -49,3 +49,9 @@ enableRobotsTXT = true
   url = "https://cycling.asealvin.com/zh"
   weight = 30
 
+
+[[menu.main]]
+  identifier = "annual"
+  name = "年度"
+  url = "/annual/"
+  weight = 40
