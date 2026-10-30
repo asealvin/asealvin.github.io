@@ -49,8 +49,3 @@ enableRobotsTXT = true
   url = "https://cycling.asealvin.com/zh"
   weight = 30
 
-[[menu.main]]
-  identifier = "podcast"
-  name = "播客"
-  url = "https://asealvin.firstory.cc/"
-  weight = 40
