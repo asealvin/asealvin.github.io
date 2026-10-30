@@ -537,3 +537,26 @@ body.list:has(.home-hero) #theme-toggle {
     .post-single .paginav a,
     .post-single .post-tags a { transition: none; }
 }
+
+
+/* Evergreen annual writing recap. Hugo computes it from published posts at build time. */
+.annual-recap { max-width: var(--main-width); margin: 0 auto; padding: 5rem 0 7rem; }
+.annual-recap-header { margin-bottom: 4rem; padding-bottom: 2.5rem; border-bottom: 1px solid color-mix(in srgb, var(--editorial-accent) 38%, var(--border)); }
+.annual-recap-kicker { margin: 0 0 .7rem; color: var(--editorial-accent); font-size: .72rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
+.annual-recap-header h1 { margin: 0; font-size: clamp(2.6rem, 7vw, 4.8rem); letter-spacing: -.05em; }
+.annual-recap-header > p:last-child { margin: 1rem 0 0; color: var(--secondary); }
+.annual-recap-year { padding: 2rem 0; border-bottom: 1px solid color-mix(in srgb, var(--editorial-accent) 28%, var(--border)); }
+.annual-recap-year-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+.annual-recap-year h2 { margin: 0; font-size: clamp(1.75rem, 4vw, 2.6rem); letter-spacing: -.03em; }
+.annual-recap-share { padding: .2rem .5rem; color: var(--secondary); text-decoration: none; transition: color .24s ease, transform .24s ease; }
+.annual-recap-share:hover { color: var(--editorial-accent-bright); transform: translateY(-2px); }
+.annual-recap-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin: 2.2rem 0; }
+.annual-recap-stats div { padding: 1.25rem; border: 1px solid color-mix(in srgb, var(--editorial-accent) 33%, var(--border)); background: color-mix(in srgb, var(--code-bg) 86%, var(--editorial-accent)); }
+.annual-recap-stats dt, .annual-recap-notes span { color: var(--secondary); font-size: .78rem; }
+.annual-recap-stats dd { display: inline-block; margin: .4rem .3rem 0 0; font-size: 1.65rem; font-weight: 600; }
+.annual-recap-stats span { color: var(--secondary); font-size: .78rem; }
+.annual-recap-notes { display: grid; gap: .45rem; }
+.annual-recap-notes p { display: flex; flex-wrap: wrap; gap: .6rem; margin: 0; }
+.annual-recap-notes a { color: var(--primary); text-decoration-color: color-mix(in srgb, var(--editorial-accent) 65%, transparent); text-underline-offset: .2em; }
+.annual-recap-empty { color: var(--secondary); }
+@media (max-width: 768px) { .annual-recap { padding: 3.5rem 0 5rem; } .annual-recap-stats { grid-template-columns: 1fr; } }
