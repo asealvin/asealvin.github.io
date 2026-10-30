@@ -1,0 +1,43 @@
+{{- define "main" }}
+{{- $posts := where site.RegularPages "Section" "posts" }}
+<article class="annual-recap">
+  <header class="annual-recap-header">
+    <p class="annual-recap-kicker">asealvin · YEAR IN REVIEW</p>
+    <h1>年度回顾</h1>
+    <p>把写下的文字，留在每一年的时间里。</p>
+  </header>
+
+  {{- range $posts.GroupByDate "2006" }}
+    {{- $words := 0 }}
+    {{- $minutes := 0 }}
+    {{- $first := "" }}
+    {{- $last := "" }}
+    {{- range .Pages.ByDate }}
+      {{- $words = add $words .WordCount }}
+      {{- $minutes = add $minutes .ReadingTime }}
+      {{- if eq $first "" }}{{ $first = .Title }}{{ end }}
+      {{- $last = .Title }}
+    {{- end }}
+    <section id="year-{{ .Key }}" class="annual-recap-year">
+      <div class="annual-recap-year-top">
+        <div>
+          <p class="annual-recap-kicker">{{ .Key }}</p>
+          <h2>{{ .Key }} 年写作回顾</h2>
+        </div>
+        <a class="annual-recap-share" href="#year-{{ .Key }}" aria-label="链接到 {{ .Key }} 年回顾">#</a>
+      </div>
+      <dl class="annual-recap-stats">
+        <div><dt>发布文章</dt><dd>{{ len .Pages }}</dd><span>篇</span></div>
+        <div><dt>累计字数</dt><dd>{{ lang.FormatNumber 0 $words }}</dd><span>字</span></div>
+        <div><dt>阅读时长</dt><dd>{{ $minutes }}</dd><span>分钟</span></div>
+      </dl>
+      <div class="annual-recap-notes">
+        <p><span>这一年的开篇</span><a href="{{ (index .Pages.ByDate 0).RelPermalink }}">{{ $first }}</a></p>
+        <p><span>这一年的最后一篇</span><a href="{{ (index .Pages.ByDate.Reverse 0).RelPermalink }}">{{ $last }}</a></p>
+      </div>
+    </section>
+  {{- else }}
+    <p class="annual-recap-empty">第一篇文章发布后，这里会自动出现年度回顾。</p>
+  {{- end }}
+</article>
+{{- end }}
