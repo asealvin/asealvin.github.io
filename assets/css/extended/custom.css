@@ -541,7 +541,7 @@ body.list:has(.home-hero) #theme-toggle {
 
 /* Evergreen annual writing recap. Hugo computes it from published posts at build time. */
 .annual-recap { max-width: var(--main-width); margin: 0 auto; padding: 5rem 0 7rem; }
-.annual-recap-header { margin-bottom: 4rem; padding-bottom: 2.5rem; border-bottom: 1px solid color-mix(in srgb, var(--editorial-accent) 38%, var(--border)); }
+.annual-recap-header { margin-bottom: 0; padding-bottom: 2rem; border-bottom: 1px solid color-mix(in srgb, var(--editorial-accent) 38%, var(--border)); }
 .annual-recap-kicker { margin: 0 0 .7rem; color: var(--editorial-accent); font-size: .72rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
 .annual-recap-header h1 { margin: 0; font-size: clamp(2.6rem, 7vw, 4.8rem); letter-spacing: -.05em; }
 .annual-recap-header > p:last-child { margin: 1rem 0 0; color: var(--secondary); }
@@ -565,7 +565,7 @@ body.list:has(.home-hero) #theme-toggle {
 .annual-recap-export { padding: .45rem .65rem; border: 1px solid color-mix(in srgb, var(--editorial-accent) 45%, var(--border)); background: transparent; color: var(--secondary); font: inherit; font-size: .78rem; cursor: pointer; transition: color .24s ease, border-color .24s ease, background-color .24s ease; }
 .annual-recap-export:hover, .annual-recap-export:focus-visible { border-color: var(--editorial-accent); background: color-mix(in srgb, var(--editorial-accent) 11%, transparent); color: var(--editorial-accent-bright); outline: none; }
 
-.annual-life { margin-top: 4rem; padding: 2rem 0; border-top: 1px solid color-mix(in srgb, var(--editorial-accent) 38%, var(--border)); }
+.annual-life { margin-top: 0; padding: 2rem 0; }
 .annual-life-intro { max-width: 62ch; margin: 1rem 0 2rem; color: var(--secondary); }
 #annual-life-year { padding: .45rem .6rem; border: 1px solid color-mix(in srgb, var(--editorial-accent) 45%, var(--border)); background: var(--theme); color: var(--primary); font: inherit; font-size: .78rem; }
 .annual-life-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
