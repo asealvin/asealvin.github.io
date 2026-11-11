@@ -19,10 +19,10 @@
 (() => {
   const zh = (navigator.language || 'en').toLowerCase().startsWith('zh');
   document.documentElement.lang = zh ? 'zh-CN' : 'en';
-  const labels = {posts: ['文章', 'Articles'], photography: ['摄影', 'Photography'], cycling: ['骑行', 'Cycling'], podcast: ['播客', 'Podcast']};
-  document.querySelectorAll('.menu a').forEach(a => {
+  const labels = {posts: ['文章', 'Articles'], photography: ['摄影', 'Photography'], cycling: ['骑行', 'Cycling'], podcast: ['播客', 'Podcast'], about: ['关于我', 'About']};
+  document.querySelectorAll('#menu a, .menu a').forEach(a => {
     const url = new URL(a.href, location.href);
-    const key = url.hostname.startsWith('photography.') ? 'photography' : url.hostname.startsWith('cycling.') ? 'cycling' : url.hostname.includes('firstory') ? 'podcast' : url.pathname.startsWith('/posts') ? 'posts' : null;
+    const key = url.hostname.startsWith('photography.') ? 'photography' : url.hostname.startsWith('cycling.') ? 'cycling' : url.hostname.includes('firstory') ? 'podcast' : url.pathname.startsWith('/posts') ? 'posts' : url.pathname.startsWith('/about') ? 'about' : null;
     if (!key) return;
     const label = a.querySelector('span') || a;
     label.textContent = labels[key][zh ? 0 : 1];
@@ -32,6 +32,13 @@
   if (title) title.textContent = zh ? 'Hi，我是 asealvin 👋' : "Hi, I'm asealvin 👋";
   const intro = document.querySelector('.home-hero .entry-content');
   if (intro) intro.textContent = zh ? '摄影师 / 写作者 / 公路车爱好者' : 'Photographer / Writer / Road cyclist';
+  if (location.pathname.replace(/\/$/, '') === '/about') {
+    const heading = document.querySelector('.post-title');
+    if (heading) heading.textContent = zh ? '我是谁？' : 'Who am I?';
+    document.title = (zh ? '我是谁？' : 'Who am I?') + ' | asealvin';
+    const body = document.querySelector('.post-content');
+    if (body) body.lang = 'zh-CN';
+  }
   if (!zh) {
     document.querySelectorAll('.page-header h1').forEach(el => {
       if (el.textContent.trim() === '文章' || el.textContent.trim() === 'Posts') el.textContent = 'Articles';
