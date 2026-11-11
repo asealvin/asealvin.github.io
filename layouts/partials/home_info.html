@@ -73,61 +73,6 @@
   })();
 </script>
 
-<script>
-(() => {
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  try {
-    if (sessionStorage.getItem('asealvin-build-intro-v1')) return;
-    sessionStorage.setItem('asealvin-build-intro-v1', '1');
-  } catch (_) { return; }
-  const start = () => {
-    const mobile = matchMedia('(max-width: 768px)').matches;
-    const targets = [document.querySelector('.logo a'), document.querySelector('#home-hero-title'), document.querySelector('.home-hero-content .entry-content'), document.querySelector('#menu')].filter(Boolean);
-    const layer = document.createElement('div');
-    layer.setAttribute('aria-hidden', 'true');
-    layer.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:1000;overflow:hidden';
-    document.body.append(layer);
-    const animations = [];
-    const clean = () => { animations.forEach(a => a.cancel()); layer.remove(); };
-    const timers = [];
-    targets.forEach((target, i) => {
-      if (mobile && i > 1) return;
-      const rect = target.getBoundingClientRect();
-      if (!rect.width || !rect.height || rect.bottom < 0 || rect.top > innerHeight) return;
-      const cursor = document.createElement('div');
-      cursor.style.cssText = 'position:absolute;left:0;top:0;color:#c9a36a;opacity:0;will-change:transform';
-      cursor.innerHTML = '<svg width="19" height="24" viewBox="0 0 19 24" fill="none"><path d="M2 2L3 20L7.5 15L11 22L14 20.5L10.5 14L17 13L2 2Z" fill="currentColor" stroke="#30271d" stroke-width="1.2"/></svg>';
-      layer.append(cursor);
-      const frame = document.createElement('div');
-      frame.style.cssText = 'position:absolute;box-sizing:border-box;border:1px solid #c9a36a;opacity:0;transform-origin:left center';
-      Object.assign(frame.style, {left:(rect.left-5)+'px',top:(rect.top-5)+'px',width:(rect.width+10)+'px',height:(rect.height+10)+'px'});
-      layer.append(frame);
-      const delay = i * 550;
-      const from = 'translate('+Math.max(4,rect.left-65)+'px,'+Math.max(4,rect.top-35)+'px)';
-      const to = 'translate('+(rect.right+5)+'px,'+(rect.bottom+5)+'px)';
-      animations.push(cursor.animate([
-        {transform:from,opacity:0,offset:0},
-        {transform:from,opacity:1,offset:.12},
-        {transform:'translate('+(rect.left-5)+'px,'+(rect.top-5)+'px)',opacity:1,offset:.3},
-        {transform:to,opacity:1,offset:.78},
-        {transform:to,opacity:0,offset:1}
-      ],{duration:1500,delay,easing:'cubic-bezier(.22,1,.36,1)',fill:'both'}));
-      animations.push(frame.animate([
-        {opacity:0,transform:'scaleX(0)',offset:0},
-        {opacity:.7,transform:'scaleX(0)',offset:.28},
-        {opacity:.7,transform:'scaleX(1)',offset:.78},
-        {opacity:0,transform:'scaleX(1)',offset:1}
-      ],{duration:1500,delay,easing:'ease-in-out',fill:'both'}));
-    });
-    timers.push(setTimeout(clean, 3500));
-    const stop = () => {timers.forEach(clearTimeout); clean();};
-    window.addEventListener('pagehide', stop, {once:true});
-    window.addEventListener('resize', stop, {once:true});
-    window.addEventListener('scroll', stop, {once:true,passive:true});
-  };
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, {once:true});
-  else start();
-})();
-</script>
+
 
 {{- end }}
