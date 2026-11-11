@@ -50,3 +50,9 @@ enableRobotsTXT = true
   weight = 30
 
 
+
+[[menu.main]]
+  identifier = "about"
+  name = "关于我"
+  url = "/about/"
+  weight = 40
