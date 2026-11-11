@@ -1,6 +1,7 @@
 ---
 title: "我是谁？"
 url: "/about/"
+layout: "about"
 ShowReadingTime: false
 ShowPostNavLinks: false
 ShowBreadCrumbs: false
